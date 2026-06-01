@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Inclunity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Inclunity</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Who Are We</a></li>
+                <li><a href="missions.html">Missions</a></li>
+                <li><a href="program.html">The Program</a></li>
+                <li><a href="elearning.html">E-Learning</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="#" class="login-link" style="color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 0.9rem;"><i class="fa-solid fa-briefcase"></i> HR Portal</a>
+                <a href="event.html" class="btn-donate">Support Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- ================================================
+                 OFFRES D'EMPLOI
+                 ================================================ -->
+            <h1 class="section-title">Join the Movement</h1>
+            <p class="section-subtitle">We are looking for passionate individuals to manage our growing global operations.</p>
+
+            <div class="grid-3">
+                <div class="card" style="text-align: left;">
+                    <span class="tag"><i class="fa-solid fa-location-dot"></i> Paris, France</span>
+                    <h3>Program Coordinator</h3>
+                    <p>Lead the integration of new beneficiaries in our European housing complexes.</p>
+                    <a href="#" class="btn-primary" style="margin-top: 20px;">Apply Now</a>
+                </div>
+
+                <div class="card" style="text-align: left; border: 2px solid var(--accent-color);">
+                    <span class="tag" style="background: #e3f2fd; color: #1565c0;"><i class="fa-solid fa-earth-americas"></i> 100% Remote</span>
+                    <h3>Fullstack Developer</h3>
+                    <p>Scale our global e-learning platform using cutting-edge technologies.</p>
+                    <a href="#" class="btn-primary" style="margin-top: 20px;">Apply Now</a>
+                </div>
+
+                <div class="card" style="text-align: left;">
+                    <span class="tag"><i class="fa-solid fa-location-dot"></i> Dakar, Senegal</span>
+                    <h3>Healthcare Manager</h3>
+                    <p>Oversee the operations of our new hospital and hygiene outreach programs.</p>
+                    <a href="#" class="btn-primary" style="margin-top: 20px;">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Avantages -->
+            <div style="margin-top: 60px; padding: 50px 40px; background: var(--white); border-radius: 20px; text-align: center; box-shadow: 0 4px 24px rgba(26,54,93,0.06);">
+                <h3 style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 32px;">Why Work with Inclunity?</h3>
+                <div class="grid-3">
+                    <div style="padding: 16px;">
+                        <i class="fa-solid fa-heart" style="font-size: 2rem; color: #e74c3c; margin-bottom: 12px; display: block;"></i>
+                        <p style="font-weight: 600; color: var(--text-color);">Premium Health Coverage</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 6px;">Full medical, dental and vision for you and your family.</p>
+                    </div>
+                    <div style="padding: 16px;">
+                        <i class="fa-solid fa-plane" style="font-size: 2rem; color: #3498db; margin-bottom: 12px; display: block;"></i>
+                        <p style="font-weight: 600; color: var(--text-color);">Global Mobility Options</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 6px;">Work from any of our 40+ offices worldwide.</p>
+                    </div>
+                    <div style="padding: 16px;">
+                        <i class="fa-solid fa-laptop" style="font-size: 2rem; color: #2ecc71; margin-bottom: 12px; display: block;"></i>
+                        <p style="font-weight: 600; color: var(--text-color);">Flexible Work Culture</p>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 6px;">Async-first, remote-friendly, outcome-driven.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================
+                 CONTRIBUTIONS SPONTANÉES
+                 ================================================ -->
+            <section class="contributions-section" id="contribute">
+                <h2 class="section-title">Contribute Your Way</h2>
+                <p class="section-subtitle">
+                    You don't need a job title to make a difference. Whether you can offer a room, teach a skill,
+                    donate goods or fund a project — every contribution reshapes a life. Select a category below.
+                </p>
+
+                <form id="contribute-form" novalidate>
+                    <input type="hidden" id="selected-category" name="category">
+
+                    <!-- Grille de catégories -->
+                    <div class="contribute-grid">
+                        <div class="contribute-card" data-type="skills" role="button" tabindex="0" aria-label="Compétences">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            <span>Skills &amp;<br>Teaching</span>
+                        </div>
+                        <div class="contribute-card" data-type="goods" role="button" tabindex="0" aria-label="Biens">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Goods &amp;<br>Equipment</span>
+                        </div>
+                        <div class="contribute-card" data-type="services" role="button" tabindex="0" aria-label="Services">
+                            <i class="fa-solid fa-handshake"></i>
+                            <span>Services &amp;<br>Pro Bono</span>
+                        </div>
+                        <div class="contribute-card" data-type="funding" role="button" tabindex="0" aria-label="Financement">
+                            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                            <span>Funding &amp;<br>Donations</span>
+                        </div>
+                        <div class="contribute-card" data-type="other" role="button" tabindex="0" aria-label="Autre">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>My Own<br>Idea</span>
+                        </div>
+                    </div>
+
+                    <!-- Champs dynamiques injectés par JS -->
+                    <div id="dynamic-fields" aria-live="polite"></div>
+
+                    <button type="submit" class="contrib-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Submit my contribution
+                    </button>
+                </form>
+
+                <!-- Témoignages rapides -->
+                <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                    <div style="background: var(--white); border-radius: var(--radius); padding: 28px 26px; border: 1px solid #edf2f7; box-shadow: 0 4px 14px rgba(26,54,93,0.05);">
+                        <p style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 16px; line-height: 1.8;">"I offered my spare apartment for 3 months. Seeing someone rebuild their life in it was the most meaningful thing I've done."</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #2b6cb0, #ecc94b); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-family: var(--font-heading);">S</div>
+                            <div>
+                                <p style="font-weight: 700; font-size: 0.9rem;">Sophie M.</p>
+                                <p style="font-size: 0.8rem; color: var(--text-light);">Housing contributor · Lyon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: var(--white); border-radius: var(--radius); padding: 28px 26px; border: 1px solid #edf2f7; box-shadow: 0 4px 14px rgba(26,54,93,0.05);">
+                        <p style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 16px; line-height: 1.8;">"I give one hour of English coaching per week. Small commitment, but the progress my student makes is incredible."</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #1a365d, #2b6cb0); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-family: var(--font-heading);">A</div>
+                            <div>
+                                <p style="font-weight: 700; font-size: 0.9rem;">Ahmed K.</p>
+                                <p style="font-size: 0.8rem; color: var(--text-light);">Volunteer teacher · Paris</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: var(--white); border-radius: var(--radius); padding: 28px 26px; border: 1px solid #edf2f7; box-shadow: 0 4px 14px rgba(26,54,93,0.05);">
+                        <p style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 16px; line-height: 1.8;">"My restaurant offers free meals every Friday evening. The connection we build around the table goes beyond food."</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #ecc94b, #e67e22); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-family: var(--font-heading);">C</div>
+                            <div>
+                                <p style="font-weight: 700; font-size: 0.9rem;">Clara D.</p>
+                                <p style="font-size: 0.8rem; color: var(--text-light);">Service contributor · Bordeaux</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Inclunity Foundation</h4>
+                <p style="color: #A0AEC0;">A global initiative under Apple ecosystems since 2020.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0;">
+                    <p><i class="fa-solid fa-location-dot"></i> 1 Apple Park Way, Cupertino, CA 95014</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 (800) 555-UNIT</p>
+                    <p><i class="fa-solid fa-envelope"></i> contact@inclunity.org</p>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Access</h4>
+                <ul style="list-style: none; line-height: 2.5;">
+                    <li><a href="about.html">Our History</a></li>
+                    <li><a href="program.html">System Details</a></li>
+                    <li><a href="elearning.html">Start Learning</a></li>
+                    <li><a href="jobs.html">Open Positions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Our Impact</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 15px;">
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Inclunity. All rights reserved. | <a href="#" style="color: #A0AEC0; text-decoration: none;">Privacy Policy</a> | <span style="opacity: 0.8;"><i class="fa-solid fa-robot"></i> Website generated by AI</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
