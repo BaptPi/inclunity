@@ -988,29 +988,33 @@ footer {
     }
 
     /* ----- NAV DROPDOWN ----- */
+    /* Le header est sticky, donc position:absolute sur .nav-links
+       se positionne par rapport au header → toujours juste en dessous */
+    header { position: sticky; top: 0; overflow: visible; }
+
     .nav-links {
         display: none;
-        position: fixed;
-        top: var(--nav-height);
+        position: absolute;
+        top: 100%;      /* colle sous le bas du header, quelle que soit sa hauteur */
         left: 0;
         right: 0;
         background: var(--white);
         flex-direction: column;
         gap: 0;
         border-top: 1px solid #edf2f7;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.10);
         padding: 8px 0;
         z-index: 999;
     }
 
     @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-8px); }
+        from { opacity: 0; transform: translateY(-6px); }
         to   { opacity: 1; transform: translateY(0); }
     }
 
     .nav-links.nav-open {
         display: flex;
-        animation: slideDown 0.22s ease;
+        animation: slideDown 0.22s ease forwards;
     }
 
     .nav-links li { width: 100%; }

@@ -111,9 +111,7 @@
         hamburger.addEventListener('click', () => {
             const isOpen = navLinks.classList.toggle('nav-open');
             hamburger.classList.toggle('open', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-            // Trap scroll when menu open
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+            hamburger.setAttribute('aria-expanded', String(isOpen));
         });
 
         // Close on link click
@@ -122,11 +120,10 @@
                 navLinks.classList.remove('nav-open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
             });
         });
 
-        // Close on outside click (fonctionne aussi avec position:fixed)
+        // Close on outside click
         document.addEventListener('click', e => {
             const isInsideHeader = header?.contains(e.target);
             const isInsideMenu = navLinks.contains(e.target);
@@ -134,7 +131,6 @@
                 navLinks.classList.remove('nav-open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
             }
         });
 
@@ -144,7 +140,6 @@
                 navLinks.classList.remove('nav-open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
                 hamburger.focus();
             }
         });
