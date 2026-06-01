@@ -1,155 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#1a365d">
-    <title>Who Are We | Inclunity</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#14233f">
+<title>Who Are We | Inclunity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-        <header>
-        <nav>
-            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Inclunity</a>
-            <div class="nav-actions">
-                <a href="event.html" class="btn-donate nav-support">Support Us</a>
-                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </nav>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Who Are We</a></li>
-            <li><a href="missions.html">Missions</a></li>
-            <li><a href="event.html">Event</a></li>
-            <li><a href="program.html">The Program</a></li>
-            <li><a href="elearning.html">E-Learning</a></li>
-            <li><a href="jobs.html">Jobs</a></li>
-        </ul>
-    </header>
+<header class="site-header" id="header">
+  <div class="bar">
+    <a href="index.html" class="brand"><span class="mark"><i class="fa-solid fa-hands-holding-circle" aria-hidden="true"></i></span> Inclunity</a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active" aria-current="page">Who Are We</a>
+      <a href="missions.html">Missions</a>
+      <a href="event.html">Event</a>
+      <a href="program.html">The Program</a>
+      <a href="elearning.html">E-Learning</a>
+      <a href="jobs.html">Jobs</a>
+      <button class="nav-theme" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="ico ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ico ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+    <div class="actions">
+      <a href="event.html" class="btn btn-accent desktop-only">Support Us</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="wrap">
+    <div class="head reveal">
+      <span class="kicker">Who we are</span>
+      <h2>Our Identity</h2>
+      <p>Founded in 2020, we have grown into a network of thousands of partnerships committed to a single mission: inclusive opportunity for all.</p>
+    </div>
+    <div class="grid">
+      <article class="card reveal"><div class="ico"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div><h3>Sustainable Funds</h3><p>We combine corporate support, global fundraising and the passion of volunteers to keep our programs running.</p></article>
+      <article class="card alt reveal"><div class="ico"><i class="fa-solid fa-users" aria-hidden="true"></i></div><h3>500,000 Beneficiaries</h3><p>Since our launch, we have helped half a million people transition from precariousness to independence.</p></article>
+      <article class="card green reveal"><div class="ico"><i class="fa-solid fa-globe" aria-hidden="true"></i></div><h3>Worldwide Network</h3><p>10,000 dedicated employees and volunteers working on every continent with the same level of care.</p></article>
+    </div>
 
-    <main>
-        <div class="container">
-            <h1 class="section-title">Our Identity</h1>
-            <p class="section-subtitle">Founded in 2020, we have grown into a network of thousands of global partnerships committed to a single mission: inclusive opportunity for all.</p>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <i class="fa-solid fa-seedling"></i>
-                    <h3>Sustainable Funds</h3>
-                    <p>We combine corporate support, global fundraising campaigns, and the passion of volunteer workers to keep our programs running.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-users"></i>
-                    <h3>500,000 Beneficiaries</h3>
-                    <p>Since our launch, we have helped half a million people transition from precariousness to independence.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-globe"></i>
-                    <h3>Worldwide Network</h3>
-                    <p>10,000 dedicated employees and volunteers working on every continent with the same level of care and importance.</p>
-                </div>
-            </div>
+    <div class="head reveal" style="margin-top:80px">
+      <span class="kicker">They support us</span>
+      <h2 style="font-size:clamp(1.5rem,3.5vw,2rem)">Our Partners</h2>
+      <p>Sample partners shown for this fictional student project.</p>
+    </div>
+    <div class="partners reveal">
+      <span><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i> Civic Trust</span>
+      <span><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Open Aid</span>
+      <span><i class="fa-solid fa-people-group" aria-hidden="true"></i> Solidarity Net</span>
+      <span><i class="fa-solid fa-globe" aria-hidden="true"></i> Global Bridge</span>
+    </div>
 
-            <!-- Partners -->
-            <div style="margin-top: 80px; text-align: center;">
-                <h3 class="section-title" style="font-size: 1.5rem;">Our Strategic Partners</h3>
-                <div style="display: flex; justify-content: center; gap: 40px; margin-top: 40px; opacity: 0.5; flex-wrap: wrap; align-items: center;">
-                    <span style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color);"><i class="fa-brands fa-apple"></i> APPLE</span>
-                    <span style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color);"><i class="fa-brands fa-google"></i> PARTNERS</span>
-                    <span style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color);"><i class="fa-brands fa-microsoft"></i> GLOBAL AID</span>
-                    <span style="font-size: 1.4rem; font-weight: 700; color: var(--primary-color);"><i class="fa-brands fa-amazon"></i> LOGISTICS</span>
-                </div>
-            </div>
-
-            <!-- Values strip -->
-            <div style="margin-top: 80px; background: var(--primary-color); border-radius: 20px; padding: 50px 40px; color: white; text-align: center;">
-                <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-color); margin-bottom: 32px;">What Drives Us</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px;">
-                    <div>
-                        <i class="fa-solid fa-scale-balanced" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 12px; display: block;"></i>
-                        <p style="font-weight: 700; margin-bottom: 6px;">Justice</p>
-                        <p style="font-size: 0.88rem; opacity: 0.75;">Every individual deserves fair access to opportunity, regardless of origin.</p>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-hands-holding-heart" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 12px; display: block;"></i>
-                        <p style="font-weight: 700; margin-bottom: 6px;">Solidarity</p>
-                        <p style="font-size: 0.88rem; opacity: 0.75;">A global community of givers and receivers, united by shared humanity.</p>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-chart-line" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 12px; display: block;"></i>
-                        <p style="font-weight: 700; margin-bottom: 6px;">Impact</p>
-                        <p style="font-size: 0.88rem; opacity: 0.75;">We measure success by lives changed, not by programs launched.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h4>Inclunity Foundation</h4>
-                <p style="color: #A0AEC0;">A global initiative empowering humanity since 2020.</p>
-                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0; line-height: 2;">
-                    <p><i class="fa-solid fa-location-dot"></i> 1 Apple Park Way, Cupertino, CA 95014</p>
-                    <p><i class="fa-solid fa-phone"></i> +1 (800) 555-UNIT</p>
-                    <p><i class="fa-solid fa-envelope"></i> contact@inclunity.org</p>
-                </div>
-            </div>
-            <div>
-                <h4>Quick Access</h4>
-                <ul style="list-style: none; line-height: 2.5;">
-                    <li><a href="about.html">Our History</a></li>
-                    <li><a href="program.html">System Details</a></li>
-                    <li><a href="elearning.html">Start Learning</a></li>
-                    <li><a href="jobs.html">Open Positions</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Follow Our Impact</h4>
-                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 15px;">
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2026 Inclunity. All rights reserved. | <a href="#" style="color: #A0AEC0; text-decoration: none;">Privacy Policy</a> | <span style="opacity: 0.8;"><i class="fa-solid fa-robot"></i> Website generated by AI</span>
-        </div>
-    </footer>
-    <script src="assets/js/main.js"></script>
-
+    <div class="band reveal">
+      <h3>What Drives Us</h3>
+      <div class="band-grid">
+        <div><i class="fa-solid fa-scale-balanced ico" aria-hidden="true"></i><strong>Justice</strong><p>Every individual deserves fair access to opportunity, regardless of origin.</p></div>
+        <div><i class="fa-solid fa-hands-holding-heart ico" aria-hidden="true"></i><strong>Solidarity</strong><p>A global community of givers and receivers, united by shared humanity.</p></div>
+        <div><i class="fa-solid fa-chart-line ico" aria-hidden="true"></i><strong>Impact</strong><p>We measure success by lives changed, not by programs launched.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <h4>Inclunity Foundation</h4>
+      <p>A global initiative empowering humanity since 2020.</p>
+      <address>
+        <div><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Illustrative address &middot; fictional project</div>
+        <div><i class="fa-solid fa-phone" aria-hidden="true"></i> +1 (800) 555-0100</div>
+        <div><i class="fa-solid fa-envelope" aria-hidden="true"></i> contact@inclunity.org</div>
+      </address>
+    </div>
+    <div>
+      <h4>Quick Access</h4>
+      <ul>
+        <li><a href="about.html">Our History</a></li>
+        <li><a href="program.html">System Details</a></li>
+        <li><a href="elearning.html">Start Learning</a></li>
+        <li><a href="jobs.html">Open Positions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Follow Our Impact</h4>
+      <nav class="socials" aria-label="Social media">
+        <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </div>
+  <div class="copy">&copy; 2026 Inclunity. All rights reserved. &middot; <a href="#">Privacy Policy</a> &middot; <span style="opacity:.8"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Fictional student project</span></div>
+</footer>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script>
-(function(){
-    var btn  = document.getElementById('hamburger');
-    var menu = document.getElementById('nav-menu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        var o = menu.classList.toggle('open');
-        btn.classList.toggle('open', o);
-        btn.setAttribute('aria-expanded', String(o));
+/* ============================================================
+   INCLUNITY — main.js
+   Navigation + thème + micro-interactions + logique par page.
+   Header/footer sont en HTML simple dans chaque fichier : ce
+   script ne fait qu'ajouter du comportement, jamais le menu lui-même.
+   ============================================================ */
+(function () {
+    'use strict';
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- MENU (une seule logique) ---------- */
+    var header = document.getElementById('header');
+    var burger = document.getElementById('hamburger');
+    var nav    = document.getElementById('nav');
+
+    if (header && burger && nav) {
+        var closeMenu = function () {
+            nav.classList.remove('open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+            burger.setAttribute('aria-label', 'Open menu');
+        };
+        burger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = nav.classList.toggle('open');
+            burger.classList.toggle('open', open);
+            burger.setAttribute('aria-expanded', String(open));
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        nav.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+        document.addEventListener('click', function (e) { if (!header.contains(e.target)) closeMenu(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    /* ---------- THÈME (avec mémorisation) ---------- */
+    var toggle = document.getElementById('theme-toggle');
+    function storedTheme() {
+        try { return localStorage.getItem('inclunity-theme'); } catch (e) { return null; }
+    }
+    function setTheme(t, persist) {
+        document.documentElement.setAttribute('data-theme', t);
+        if (persist) { try { localStorage.setItem('inclunity-theme', t); } catch (e) {} }
+    }
+    setTheme(storedTheme() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(next, true);
+        });
+    }
+
+    /* ---------- SCROLL : ombre header + back-to-top (rAF) ---------- */
+    var totop = document.getElementById('totop');
+    var ticking = false;
+    function onScroll() {
+        var s = window.scrollY;
+        if (header) header.classList.toggle('scrolled', s > 20);
+        if (totop) totop.classList.toggle('show', s > 500);
+        ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+    onScroll();
+    if (totop) totop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
-    menu.addEventListener('click', function(e){
-        if(e.target.tagName==='A'){
-            menu.classList.remove('open');
-            btn.classList.remove('open');
+
+    /* ---------- APPARITIONS AU SCROLL ---------- */
+    var reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window && !reduce) {
+        reveals.forEach(function (el) { el.classList.add('is-pre'); }); // masquage posé par le JS uniquement
+        var ro = new IntersectionObserver(function (es) {
+            es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } });
+        }, { threshold: 0.15 });
+        reveals.forEach(function (el) { ro.observe(el); });
+    }
+    /* sans JS / sans IntersectionObserver : .reveal n'est jamais masqué -> contenu visible */
+
+    /* ---------- COMPTEURS ANIMÉS ---------- */
+    function animateCount(el) {
+        var target = parseInt(el.dataset.count, 10) || 0;
+        var suffix = el.dataset.suffix || '';
+        var start = null, dur = 1700;
+        function frame(ts) {
+            if (start === null) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * eased).toLocaleString('en-US') + suffix;
+            if (p < 1) window.requestAnimationFrame(frame);
         }
+        window.requestAnimationFrame(frame);
+    }
+    var counters = document.querySelectorAll('.n[data-count]');
+    if (counters.length && 'IntersectionObserver' in window && !reduce) {
+        var co = new IntersectionObserver(function (es) {
+            es.forEach(function (en) { if (en.isIntersecting) { animateCount(en.target); co.unobserve(en.target); } });
+        }, { threshold: 0.5 });
+        counters.forEach(function (el) { co.observe(el); });
+    } else {
+        counters.forEach(function (el) { el.textContent = (parseInt(el.dataset.count, 10) || 0).toLocaleString('en-US') + (el.dataset.suffix || ''); });
+    }
+
+    /* ---------- TOAST ---------- */
+    var toastWrap = document.getElementById('toast-container');
+    if (!toastWrap) { toastWrap = document.createElement('div'); toastWrap.id = 'toast-container'; document.body.appendChild(toastWrap); }
+    function showToast(msg, type, duration) {
+        type = type || 'default'; duration = duration || 4000;
+        var t = document.createElement('div');
+        t.className = 'toast ' + type;
+        t.setAttribute('role', 'status');
+        t.textContent = msg;
+        toastWrap.appendChild(t);
+        requestAnimationFrame(function () { requestAnimationFrame(function () { t.classList.add('show'); }); });
+        setTimeout(function () {
+            t.classList.remove('show');
+            t.addEventListener('transitionend', function () { t.remove(); }, { once: true });
+        }, duration);
+    }
+
+    /* ---------- NEWSLETTER ---------- */
+    var nlForm = document.getElementById('newsletter-form');
+    if (nlForm) {
+        nlForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = nlForm.querySelector('input[type="email"]');
+            if (email && email.value.trim()) { showToast('🎉 Thank you! You\'ll receive our next impact report.', 'success'); nlForm.reset(); }
+        });
+    }
+
+    /* ---------- BOUTONS "APPLY NOW" ---------- */
+    document.querySelectorAll('[data-apply]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var card = a.closest('.card') || document;
+            var title = card.querySelector('h3');
+            showToast('📩 Redirecting to application for ' + (title ? title.textContent : 'this position') + '…', 'info');
+        });
     });
-    document.addEventListener('click', function(e){
-        if(!document.querySelector('header').contains(e.target)){
-            menu.classList.remove('open');
-            btn.classList.remove('open');
+
+    /* ---------- BOUTON "REGISTER" (event) ---------- */
+    var regBtn = document.getElementById('register-btn');
+    if (regBtn) {
+        regBtn.addEventListener('click', function () { showToast('🎬 You\'re registered! Check your email for details.', 'success'); });
+    }
+
+    /* ---------- COUNTDOWN (event) ---------- */
+    var countdown = document.getElementById('countdown');
+    if (countdown) {
+        var target = new Date('2026-06-26T09:00:00');
+        var pad = function (n) { return String(n).padStart(2, '0'); };
+        var cdD = document.getElementById('cd-days');
+        var cdH = document.getElementById('cd-hours');
+        var cdM = document.getElementById('cd-min');
+        var cdS = document.getElementById('cd-sec');
+        var tick = function () {
+            var diff = target - new Date();
+            if (diff <= 0) {
+                countdown.innerHTML = '<p style="color:var(--accent);font-size:1.4rem;font-weight:700;">🔴 Live Now!</p>';
+                clearInterval(timer); return;
+            }
+            cdD.textContent = pad(Math.floor(diff / 86400000));
+            cdH.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+            cdM.textContent = pad(Math.floor((diff % 3600000) / 60000));
+            cdS.textContent = pad(Math.floor((diff % 60000) / 1000));
+        };
+        tick();
+        var timer = setInterval(tick, 1000);
+    }
+
+    /* ---------- FORMULAIRE CONTRIBUTION (jobs) ---------- */
+    var contributeCards  = document.querySelectorAll('.contrib-card');
+    var dynamicFields    = document.getElementById('dynamic-fields');
+    var contribForm      = document.getElementById('contribute-form');
+    var submitBtn        = contribForm ? contribForm.querySelector('.contrib-submit') : null;
+    var selectedCategory = document.getElementById('selected-category');
+
+    var fieldConfigs = {
+        skills:   { icon: 'fa-chalkboard-user', title: 'Skills & Teaching', fields: [
+            { id: 'skill-domain', label: 'Your field', type: 'text', placeholder: 'e.g. English, Python…' },
+            { id: 'skill-format', label: 'Format', type: 'select', options: ['Online live', 'Pre-recorded', 'In-person', '1-on-1 mentoring'] },
+            { id: 'skill-avail',  label: 'Weekly availability', type: 'text', placeholder: 'e.g. 2h weekends' },
+            { id: 'skill-level',  label: 'Level', type: 'select', options: ['Beginner', 'Intermediate', 'Advanced', 'All'] },
+            { id: 'skill-detail', label: 'Additional details', type: 'textarea', placeholder: 'Tell us more…', full: true } ] },
+        goods:    { icon: 'fa-box-open', title: 'Goods & Equipment', fields: [
+            { id: 'goods-type', label: 'Type', type: 'text', placeholder: 'Clothing, Computers…' },
+            { id: 'goods-qty',  label: 'Quantity', type: 'text', placeholder: 'e.g. 5 boxes' },
+            { id: 'goods-cond', label: 'Condition', type: 'select', options: ['New', 'Like new', 'Good', 'Acceptable'] },
+            { id: 'goods-ship', label: 'Pickup / delivery', type: 'select', options: ['Pickup only', 'Local delivery', 'Can ship'] },
+            { id: 'goods-desc', label: 'Details', type: 'textarea', placeholder: 'Photos, location…', full: true } ] },
+        services: { icon: 'fa-handshake', title: 'Services & Pro Bono', fields: [
+            { id: 'svc-type',  label: 'Service', type: 'text', placeholder: 'Legal, Medical, Translation…' },
+            { id: 'svc-hours', label: 'Hours/month', type: 'text', placeholder: 'e.g. 4h' },
+            { id: 'svc-dur',   label: 'Duration', type: 'select', options: ['One-time', '1-3 months', '3-6 months', 'Ongoing'] },
+            { id: 'svc-mode',  label: 'Mode', type: 'select', options: ['Remote', 'In-person', 'Both'] },
+            { id: 'svc-desc',  label: 'Describe your offer', type: 'textarea', placeholder: 'What can you bring?', full: true } ] },
+        funding:  { icon: 'fa-circle-dollar-to-slot', title: 'Funding & Donations', fields: [
+            { id: 'fund-type', label: 'Type', type: 'select', options: ['One-time', 'Monthly', 'Project sponsorship', 'Corporate grant'] },
+            { id: 'fund-amt',  label: 'Amount (USD)', type: 'text', placeholder: 'e.g. 500' },
+            { id: 'fund-dest', label: 'Destination', type: 'select', options: ['Where most needed', 'Housing', 'E-Learning', 'Healthcare'] },
+            { id: 'fund-msg',  label: 'Message', type: 'textarea', placeholder: 'Any notes…', full: true } ] },
+        other:    { icon: 'fa-lightbulb', title: 'My Own Idea', fields: [
+            { id: 'idea-title', label: 'Title', type: 'text', placeholder: 'Short name' },
+            { id: 'idea-reach', label: 'Estimated reach', type: 'text', placeholder: 'How many people?' },
+            { id: 'idea-desc',  label: 'Describe your idea', type: 'textarea', placeholder: 'What problem does it solve?', full: true } ] }
+    };
+
+    function esc(s) { return String(s).replace(/"/g, '&quot;'); }
+
+    function buildFields(type) {
+        if (!dynamicFields) return;
+        var cfg = fieldConfigs[type];
+        if (!cfg) return;
+        var html = '<div class="fields-header"><i class="fa-solid ' + cfg.icon + '" aria-hidden="true"></i>' + cfg.title + '</div><div class="fields-grid">';
+        cfg.fields.filter(function (f) { return !f.full; }).forEach(function (f) {
+            html += '<div class="field-group"><label for="' + f.id + '">' + f.label + '</label>';
+            if (f.type === 'select') {
+                html += '<select id="' + f.id + '" name="' + f.id + '">' + f.options.map(function (o) { return '<option>' + o + '</option>'; }).join('') + '</select>';
+            } else if (f.type === 'textarea') {
+                html += '<textarea id="' + f.id + '" name="' + f.id + '" rows="3" placeholder="' + esc(f.placeholder) + '"></textarea>';
+            } else {
+                html += '<input type="text" id="' + f.id + '" name="' + f.id + '" placeholder="' + esc(f.placeholder) + '">';
+            }
+            html += '</div>';
+        });
+        html += '</div>';
+        cfg.fields.filter(function (f) { return f.full; }).forEach(function (f) {
+            html += '<div class="field-group full"><label for="' + f.id + '">' + f.label + '</label><textarea id="' + f.id + '" name="' + f.id + '" rows="4" placeholder="' + esc(f.placeholder) + '"></textarea></div>';
+        });
+        html += '<div class="contact-fields"><div class="field-group"><label for="c-name">Your name</label><input type="text" id="c-name" name="name" autocomplete="name" placeholder="Sophie Martin" required></div><div class="field-group"><label for="c-email">Your email</label><input type="email" id="c-email" name="email" autocomplete="email" placeholder="sophie@example.com" required></div></div>';
+        dynamicFields.innerHTML = html;
+        dynamicFields.classList.add('visible');
+        if (submitBtn) submitBtn.style.display = 'inline-flex';
+        if (window.innerWidth <= 768) setTimeout(function () { dynamicFields.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 350);
+    }
+
+    contributeCards.forEach(function (card) {
+        function activate() {
+            contributeCards.forEach(function (c) { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
+            card.classList.add('selected'); card.setAttribute('aria-pressed', 'true');
+            if (selectedCategory) selectedCategory.value = card.dataset.type;
+            buildFields(card.dataset.type);
         }
+        card.setAttribute('aria-pressed', 'false');
+        card.addEventListener('click', activate);
+        card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
     });
+
+    if (contribForm) {
+        contribForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('c-name'), email = document.getElementById('c-email');
+            if (!name || !name.value.trim() || !email || !email.value.trim()) { showToast('Please fill in your name and email.', 'default'); return; }
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending…'; }
+            setTimeout(function () {
+                showToast('✅ Thank you ' + name.value.trim() + '! We\'ll be in touch soon.', 'success', 6000);
+                contribForm.reset();
+                contributeCards.forEach(function (c) { c.classList.remove('selected'); c.setAttribute('aria-pressed', 'false'); });
+                if (dynamicFields) { dynamicFields.classList.remove('visible'); dynamicFields.innerHTML = ''; }
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.style.display = 'none'; submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Submit my contribution'; }
+            }, 1200);
+        });
+    }
+
 })();
 </script>
-
 </body>
 </html>
