@@ -55,26 +55,25 @@
     </style>
 </head>
 <body>
-    <header>
+        <header>
         <nav>
             <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Inclunity</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">Who Are We</a></li>
-                <li><a href="missions.html">Missions</a></li>
-                <li><a href="event.html">Event</a></li>
-                <li><a href="program.html">The Program</a></li>
-                <li><a href="elearning.html">E-Learning</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-            </ul>
             <div class="nav-actions">
-                <a href="#" class="login-link" style="color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 0.9rem;"><i class="fa-solid fa-briefcase"></i> HR Portal</a>
-                <a href="event.html" class="btn-donate">Support Us</a>
-                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <a href="event.html" class="btn-donate nav-support">Support Us</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </nav>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Who Are We</a></li>
+            <li><a href="missions.html">Missions</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="program.html">The Program</a></li>
+            <li><a href="elearning.html">E-Learning</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+        </ul>
     </header>
 
     <main>
@@ -243,5 +242,32 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+
+<script>
+(function(){
+    var btn  = document.getElementById('hamburger');
+    var menu = document.getElementById('nav-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var o = menu.classList.toggle('open');
+        btn.classList.toggle('open', o);
+        btn.setAttribute('aria-expanded', String(o));
+    });
+    menu.addEventListener('click', function(e){
+        if(e.target.tagName==='A'){
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+        }
+    });
+    document.addEventListener('click', function(e){
+        if(!document.querySelector('header').contains(e.target)){
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+        }
+    });
+})();
+</script>
+
 </body>
 </html>
