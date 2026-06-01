@@ -2,11 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a365d">
     <title>E-Learning Platform | Inclunity</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .course-track {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--white);
+            border: 1px solid #edf2f7;
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            transition: box-shadow var(--transition), transform var(--transition);
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .course-track:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateX(4px);
+        }
+        .course-track-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .course-track h4 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+        .course-track p {
+            font-size: 0.83rem;
+            color: var(--text-light);
+        }
+        .course-track .badge {
+            margin-left: auto;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 100px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        @media (max-width: 480px) {
+            .course-track { flex-wrap: wrap; }
+            .course-track .badge { margin-left: 0; }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,73 +68,100 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">Who Are We</a></li>
                 <li><a href="missions.html">Missions</a></li>
+                <li><a href="event.html">Event</a></li>
                 <li><a href="program.html">The Program</a></li>
                 <li><a href="elearning.html">E-Learning</a></li>
                 <li><a href="jobs.html">Jobs</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="nav-actions">
                 <a href="#" class="login-link" style="color: var(--primary-color); font-weight: 600; text-decoration: none;"><i class="fa-solid fa-user-graduate"></i> Student Login</a>
                 <a href="event.html" class="btn-donate">Support Us</a>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero" style="padding: 100px 20px; background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'); background-size: cover; background-position: center;">
-            <div class="container">
+        <section class="hero" style="padding: 100px 20px; background: linear-gradient(rgba(26,54,93,0.85), rgba(26,54,93,0.85)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'); background-size: cover; background-position: center;">
+            <div class="container" style="padding: 0 20px;">
                 <h1 style="color: var(--accent-color);">Education: The Key to Independence</h1>
-                <p style="max-width: 700px; margin: 20px auto;">A collaborative space where volunteer experts share knowledge and students build their future. 100% Free. 100% Empowering.</p>
-                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
-                    <a href="#" class="btn-donate login-link">Access My Courses</a>
+                <p style="max-width: 680px; margin: 20px auto;">A collaborative space where volunteer experts share knowledge and students build their future. 100% Free. 100% Empowering.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn-donate">Access My Courses</a>
                     <a href="#volunteer-teacher" class="btn-primary" style="background: white; color: var(--primary-color);">Become a Volunteer Teacher</a>
                 </div>
             </div>
         </section>
 
-        <div class="container" style="padding: 80px 20px;">
+        <div class="container">
             <h2 class="section-title">Our Learning Paths</h2>
-            <p class="section-subtitle">High-quality content curated by professionals for our 4-month transition program.</p>
-            
-            <div class="grid-3">
+            <p class="section-subtitle">High-quality content curated by professionals for our 4-month transition program. Available in 20+ languages.</p>
+
+            <!-- Featured cards -->
+            <div class="grid-3" style="margin-bottom: 60px;">
                 <div class="card">
                     <span class="tag" style="background: #e8f5e9; color: #2e7d32;">Active Community</span>
                     <i class="fa-solid fa-laptop-code" style="margin-top: 15px;"></i>
                     <h3>Digital Literacy</h3>
                     <p>Master essential tools used in modern companies, from cloud office suites to coding basics.</p>
                 </div>
-                
-                <div class="card">
+                <div class="card" style="border: 2px solid var(--accent-color);">
                     <span class="tag" style="background: #fff3e0; color: #ef6c00;">Native Speakers</span>
-                    <i class="fa-solid fa-comments" style="margin-top: 15px;"></i>
+                    <i class="fa-solid fa-comments" style="margin-top: 15px; color: var(--accent-color);"></i>
                     <h3>Global Languages</h3>
                     <p>Learn English, French, or Spanish through lessons provided by our global network of volunteers.</p>
                 </div>
-                
                 <div class="card">
                     <i class="fa-solid fa-briefcase"></i>
                     <h3>Professional Growth</h3>
                     <p>Soft skills, leadership, and entrepreneurship courses designed to help you succeed in the global market.</p>
                 </div>
             </div>
+
+            <!-- Course list (mobile-friendly rows) -->
+            <h3 style="font-family: var(--font-heading); color: var(--primary-color); font-size: 1.4rem; margin-bottom: 24px;">Browse All Tracks</h3>
+            <a href="#" class="course-track">
+                <div class="course-track-icon" style="background: #e8f5e9;"><i class="fa-solid fa-laptop-code" style="color: #2e7d32;"></i></div>
+                <div><h4>Intro to Computers &amp; Internet</h4><p>Self-paced · 6 hours · Beginner</p></div>
+                <span class="badge" style="background: #e8f5e9; color: #2e7d32;">Free</span>
+            </a>
+            <a href="#" class="course-track">
+                <div class="course-track-icon" style="background: #ebf8ff;"><i class="fa-solid fa-comments" style="color: #1565c0;"></i></div>
+                <div><h4>Everyday English — A1 to B2</h4><p>Live sessions · 12 weeks · All levels</p></div>
+                <span class="badge" style="background: #ebf8ff; color: #1565c0;">Free</span>
+            </a>
+            <a href="#" class="course-track">
+                <div class="course-track-icon" style="background: #fff3e0;"><i class="fa-solid fa-chart-pie" style="color: #ef6c00;"></i></div>
+                <div><h4>Entrepreneurship Foundations</h4><p>Self-paced · 8 hours · Intermediate</p></div>
+                <span class="badge" style="background: #fff3e0; color: #ef6c00;">Free</span>
+            </a>
+            <a href="#" class="course-track">
+                <div class="course-track-icon" style="background: #fce4ec;"><i class="fa-solid fa-heart-pulse" style="color: #c62828;"></i></div>
+                <div><h4>Basic Healthcare &amp; First Aid</h4><p>Self-paced · 4 hours · All levels</p></div>
+                <span class="badge" style="background: #fce4ec; color: #c62828;">Free</span>
+            </a>
         </div>
 
         <section id="volunteer-teacher" style="background: #f4f7f6; padding: 80px 0;">
-            <div class="container" style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
+            <div class="container" style="display: flex; align-items: center; gap: 50px; flex-wrap: wrap; padding: 0 24px;">
+                <div style="flex: 1; min-width: 280px;">
                     <h2 style="color: var(--primary-color); margin-bottom: 20px;">Share Your Expertise</h2>
                     <p style="margin-bottom: 20px;">Are you a professional or an academic? Join our <strong>10,000 volunteers</strong> and help us provide quality education to everyone around the globe.</p>
-                    <ul style="list-style: none; margin-bottom: 30px; line-height: 2;">
+                    <ul style="list-style: none; margin-bottom: 30px; line-height: 2.2;">
                         <li><i class="fa-solid fa-check" style="color: var(--accent-color);"></i> Create free courses in your field</li>
                         <li><i class="fa-solid fa-check" style="color: var(--accent-color);"></i> Mentor students through their 4-month program</li>
                         <li><i class="fa-solid fa-check" style="color: var(--accent-color);"></i> Access our professional recording studio tools</li>
                     </ul>
                     <a href="#" class="btn-donate">Apply as Volunteer Instructor</a>
                 </div>
-                <div style="flex: 1; min-width: 300px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div style="flex: 1; min-width: 280px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
                     <h3 style="text-align: center; margin-bottom: 25px;">Instructor Dashboard Preview</h3>
-                    <div style="border: 1px dashed #ddd; padding: 40px; text-align: center; color: #999;">
-                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                        <p>Drag and drop your course materials here<br><small>(Video, PDF, or Quiz)</small></p>
+                    <div style="border: 2px dashed #e2e8f0; padding: 40px; text-align: center; color: #a0aec0; border-radius: 12px;">
+                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 3rem; margin-bottom: 15px; display: block; color: var(--secondary-color);"></i>
+                        <p style="font-weight: 600; color: var(--text-color); margin-bottom: 6px;">Drag and drop your course materials</p>
+                        <small>Video, PDF, or Quiz</small>
                     </div>
                 </div>
             </div>
@@ -93,8 +172,8 @@
         <div class="footer-grid">
             <div>
                 <h4>Inclunity Foundation</h4>
-                <p style="color: #A0AEC0;">A global initiative under Apple ecosystems since 2020.</p>
-                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0;">
+                <p style="color: #A0AEC0;">A global initiative empowering humanity since 2020.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0; line-height: 2;">
                     <p><i class="fa-solid fa-location-dot"></i> 1 Apple Park Way, Cupertino, CA 95014</p>
                     <p><i class="fa-solid fa-phone"></i> +1 (800) 555-UNIT</p>
                     <p><i class="fa-solid fa-envelope"></i> contact@inclunity.org</p>

@@ -1,757 +1,462 @@
 /* ============================================================
-   VARIABLES & DESIGN TOKENS
+   INCLUNITY — main.js
+   Mobile-first version with bottom nav, scroll progress,
+   fade-in animations, hamburger menu, contribute form & toasts
    ============================================================ */
-   :root {
-    --primary-color: #1a365d;
-    --secondary-color: #2b6cb0;
-    --accent-color: #ecc94b;
-    --text-color: #2d3748;
-    --text-light: #718096;
-    --bg-color: #f7fafc;
-    --white: #ffffff;
-    --card-shadow: 0 4px 24px rgba(26, 54, 93, 0.07);
-    --card-shadow-hover: 0 20px 48px rgba(26, 54, 93, 0.14);
-    --radius: 16px;
-    --radius-sm: 8px;
-    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --font-main: 'Inter', sans-serif;
-    --font-heading: 'Playfair Display', serif;
-}
-
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    font-family: var(--font-main);
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    line-height: 1.7;
-    overflow-x: hidden;
-}
-
-h1, h2, h3, h4, .logo {
-    font-family: var(--font-heading);
-    line-height: 1.2;
-}
-
-/* Scrollbar personnalisée */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
-    border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
-
-/* Focus visible pour l'accessibilité */
-:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
-/* ============================================================
-   BARRE DE PROGRESSION DE LECTURE
-   ============================================================ */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-    z-index: 9999;
-    transition: width 0.1s linear;
-    pointer-events: none;
-}
-
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
-header {
-    background: var(--white);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.logo {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    transition: opacity var(--transition);
-}
-.logo:hover { opacity: 0.75; }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.75rem;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.01em;
-    position: relative;
-    padding-bottom: 2px;
-    transition: color var(--transition);
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width var(--transition);
-    border-radius: 2px;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--primary-color);
-}
-
-/* Hamburger responsive */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-}
-.hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--primary-color);
-    border-radius: 2px;
-    transition: var(--transition);
-    transform-origin: center;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ============================================================
-   BOUTONS
-   ============================================================ */
-.btn-donate, .btn-primary {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 11px 26px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.01em;
-    transition: background var(--transition), box-shadow var(--transition), transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    will-change: transform;
-}
-
-.btn-donate::before, .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.12);
-    opacity: 0;
-    transition: opacity var(--transition);
-}
-.btn-donate:hover::before, .btn-primary:hover::before { opacity: 1; }
-
-.btn-donate:hover, .btn-primary:hover {
-    background: var(--secondary-color);
-    box-shadow: 0 6px 20px rgba(43, 108, 176, 0.35);
-}
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--white);
-    text-align: center;
-    padding: 130px 20px;
-    position: relative;
-    overflow: hidden;
-    transform: translateY(var(--parallax-y, 0));
-    will-change: transform;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-}
-
-.hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    margin-bottom: 20px;
-    letter-spacing: -0.03em;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.15);
-}
-
-.hero p {
-    font-size: 1.15rem;
-    max-width: 680px;
-    margin: 0 auto 30px;
-    opacity: 0.88;
-}
-
-/* ============================================================
-   CONTENEURS & TYPOGRAPHIE
-   ============================================================ */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 90px 24px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    color: var(--primary-color);
-    margin-bottom: 14px;
-    letter-spacing: -0.02em;
-}
-
-.section-subtitle {
-    text-align: center;
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: 60px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.8;
-}
-
-/* ============================================================
-   GRILLES & CARTES
-   ============================================================ */
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-}
-
-.card {
-    background: var(--white);
-    padding: 40px 32px;
-    border-radius: var(--radius);
-    box-shadow: var(--card-shadow);
-    text-align: center;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    border: 1px solid #edf2f7;
-    position: relative;
-    overflow: hidden;
-}
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition);
-}
-
-.card:hover::before { transform: scaleX(1); }
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--card-shadow-hover);
-    border-color: transparent;
-}
-
-.card i {
-    font-size: 2.6rem;
-    color: var(--secondary-color);
-    margin-bottom: 22px;
-    display: block;
-    transition: transform var(--transition), color var(--transition);
-}
-
-.card:hover i {
-    transform: scale(1.1);
-    color: var(--primary-color);
-}
-
-.card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    color: var(--primary-color);
-}
-
-.card p { color: var(--text-light); font-size: 0.97rem; }
-
-/* ============================================================
-   TAGS
-   ============================================================ */
-.tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 14px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-bottom: 14px;
-    background: #ebf8ff;
-    color: var(--secondary-color);
-}
-
-/* ============================================================
-   TIMELINE
-   ============================================================ */
-.timeline {
-    max-width: 760px;
-    margin: 0 auto;
-    position: relative;
-    padding-left: 44px;
-    border-left: 3px solid #dbe8f5;
-}
-
-.timeline-item {
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -52px;
-    top: 6px;
-    width: 18px;
-    height: 18px;
-    background: var(--accent-color);
-    border: 3px solid var(--white);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(43,108,176,0.15);
-    transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.timeline-item:hover::before {
-    transform: scale(1.3);
-    box-shadow: 0 0 0 6px rgba(43,108,176,0.2);
-}
-
-.timeline-content {
-    background: var(--white);
-    padding: 28px 32px;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--card-shadow);
-    transition: box-shadow var(--transition), transform var(--transition);
-}
-
-.timeline-content:hover {
-    box-shadow: var(--card-shadow-hover);
-    transform: translateX(4px);
-}
-
-.timeline-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 8px;
-    font-size: 1.3rem;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 70px 24px 24px;
-}
-
-.footer-grid {
-    max-width: 1200px;
-    margin: 0 auto 50px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 50px;
-}
-
-.footer-grid h4 {
-    font-size: 1.1rem;
-    margin-bottom: 18px;
-    color: var(--accent-color);
-    letter-spacing: 0.02em;
-}
-
-.footer-grid a {
-    color: #A0AEC0;
-    text-decoration: none;
-    font-size: 0.92rem;
-    transition: color var(--transition);
-}
-.footer-grid a:hover { color: var(--white); }
-
-.footer-grid li { margin-bottom: 6px; }
-
-.copyright {
-    text-align: center;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    color: #718096;
-    font-size: 0.85rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* ============================================================
-   TOAST NOTIFICATIONS
-   ============================================================ */
-#toast-container {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 9998;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    pointer-events: none;
-}
-
-.toast {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 14px 22px;
-    border-radius: var(--radius-sm);
-    font-size: 0.92rem;
-    font-weight: 500;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    max-width: 380px;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4,0,0.2,1);
-    border-left: 4px solid var(--accent-color);
-    pointer-events: auto;
-}
-
-.toast-success { border-left-color: #48bb78; }
-.toast-info { border-left-color: var(--secondary-color); }
-
-.toast.toast-show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ============================================================
-   SECTION CONTRIBUTIONS SPONTANÉES (jobs.html)
-   ============================================================ */
-.contributions-section {
-    margin-top: 100px;
-    padding-top: 80px;
-    border-top: 1px solid #edf2f7;
-}
-
-.contributions-section .section-title {
-    margin-bottom: 10px;
-}
-
-.contributions-section .section-subtitle {
-    margin-bottom: 44px;
-}
-
-/* Grille des catégories */
-.contribute-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-bottom: 36px;
-}
-
-.contribute-card {
-    background: var(--white);
-    border: 2px solid #edf2f7;
-    border-radius: var(--radius);
-    padding: 28px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
-    user-select: none;
-}
-
-.contribute-card:hover {
-    border-color: var(--secondary-color);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(43,108,176,0.1);
-}
-
-.contribute-card.selected {
-    border-color: var(--primary-color);
-    background: linear-gradient(135deg, #ebf8ff 0%, #e6f0fb 100%);
-    box-shadow: 0 8px 24px rgba(26,54,93,0.12);
-}
-
-.contribute-card i {
-    font-size: 2rem;
-    color: var(--secondary-color);
-    margin-bottom: 12px;
-    display: block;
-    transition: transform var(--transition), color var(--transition);
-}
-
-.contribute-card.selected i { color: var(--primary-color); transform: scale(1.1); }
-.contribute-card:hover i { transform: scale(1.08); }
-
-.contribute-card span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-color);
-    display: block;
-    line-height: 1.3;
-}
-
-.contribute-card.selected span { color: var(--primary-color); }
-
-/* Champs dynamiques */
-#dynamic-fields {
-    background: var(--white);
-    border-radius: var(--radius);
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, padding 0.4s ease;
-}
-
-#dynamic-fields.fields-visible {
-    max-height: 900px;
-    opacity: 1;
-    padding: 36px;
-}
-
-.fields-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #edf2f7;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.fields-header i {
-    color: var(--accent-color);
-    font-size: 1.3rem;
-}
-
-.fields-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 24px;
-}
-
-.contact-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding-top: 24px;
-    border-top: 1px solid #edf2f7;
-    margin-top: 4px;
-}
-
-.field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.field-group.full { grid-column: 1 / -1; }
-
-.field-group label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-light);
-}
-
-.field-group input,
-.field-group select,
-.field-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid #e2e8f0;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-main);
-    font-size: 0.95rem;
-    color: var(--text-color);
-    background: var(--bg-color);
-    transition: border-color var(--transition), box-shadow var(--transition);
-    outline: none;
-    resize: vertical;
-}
-
-.field-group input:focus,
-.field-group select:focus,
-.field-group textarea:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(43,108,176,0.12);
-    background: var(--white);
-}
-
-.field-group select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 36px;
-}
-
-.contrib-submit {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    margin-top: 28px;
-    font-size: 1rem;
-    padding: 14px 36px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 100px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
-    font-family: var(--font-main);
-}
-
-.contrib-submit:hover {
-    background: var(--secondary-color);
-    box-shadow: 0 8px 24px rgba(43,108,176,0.3);
-}
-
-.contrib-submit:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* ============================================================
-   ANIMATIONS AU SCROLL (fade-in-up)
-   ============================================================ */
-.fade-in-hidden {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
-                transform 0.7s cubic-bezier(0.4,0,0.2,1);
-}
-
-.fade-in-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 900px) {
-    .fields-grid,
-    .contact-fields {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0; right: 0;
-        background: var(--white);
-        flex-direction: column;
-        gap: 0;
-        border-top: 1px solid #edf2f7;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        padding: 16px 0;
+   (() => {
+    'use strict';
+
+    /* ----------------------------------------------------------
+       SCROLL PROGRESS BAR
+    ---------------------------------------------------------- */
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.prepend(progressBar);
+
+    /* ----------------------------------------------------------
+       STICKY HEADER
+    ---------------------------------------------------------- */
+    const header = document.querySelector('header');
+
+    /* ----------------------------------------------------------
+       MOBILE BOTTOM NAV — inject dynamically
+    ---------------------------------------------------------- */
+    const bottomNav = document.createElement('nav');
+    bottomNav.className = 'mobile-bottom-nav';
+    bottomNav.setAttribute('aria-label', 'Main navigation');
+    bottomNav.innerHTML = `
+        <ul>
+            <li><a href="index.html" data-page="index"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="missions.html" data-page="missions"><i class="fa-solid fa-bullseye"></i><span>Missions</span></a></li>
+            <li><a href="program.html" data-page="program"><i class="fa-solid fa-timeline"></i><span>Program</span></a></li>
+            <li><a href="elearning.html" data-page="elearning"><i class="fa-solid fa-graduation-cap"></i><span>Learn</span></a></li>
+            <li><a href="jobs.html" data-page="jobs"><i class="fa-solid fa-briefcase"></i><span>Jobs</span></a></li>
+        </ul>
+    `;
+    document.body.appendChild(bottomNav);
+
+    /* ----------------------------------------------------------
+       FLOATING ACTION BUTTON — Support Us
+    ---------------------------------------------------------- */
+    const fab = document.createElement('a');
+    fab.href = 'event.html';
+    fab.className = 'fab-support';
+    fab.setAttribute('aria-label', 'Support Us');
+    fab.innerHTML = '<i class="fa-solid fa-heart"></i>';
+    document.body.appendChild(fab);
+
+    /* ----------------------------------------------------------
+       ACTIVE PAGE HIGHLIGHTING
+    ---------------------------------------------------------- */
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+
+    // Desktop nav
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href')?.replace('.html', '') || '';
+        if (href === currentPage || (currentPage === '' && href === 'index')) {
+            link.classList.add('active');
+        }
+    });
+
+    // Bottom nav
+    bottomNav.querySelectorAll('a').forEach(link => {
+        if (link.dataset.page === currentPage || (currentPage === '' && link.dataset.page === 'index')) {
+            link.classList.add('active');
+        }
+    });
+
+    /* ----------------------------------------------------------
+       SCROLL HANDLER (throttled)
+    ---------------------------------------------------------- */
+    let ticking = false;
+
+    const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            const docH = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docH > 0 ? (scrolled / docH) * 100 : 0;
+
+            // Progress bar
+            progressBar.style.width = pct + '%';
+
+            // Header shadow
+            if (header) {
+                header.classList.toggle('scrolled', scrolled > 50);
+            }
+
+            // Parallax hero (desktop only)
+            if (window.innerWidth > 768) {
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.setProperty('--parallax-y', (scrolled * 0.25) + 'px');
+                }
+            }
+
+            ticking = false;
+        });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ----------------------------------------------------------
+       HAMBURGER MENU
+    ---------------------------------------------------------- */
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('nav-open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            // Trap scroll when menu open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', e => {
+            if (!header?.contains(e.target) && navLinks.classList.contains('nav-open')) {
+                navLinks.classList.remove('nav-open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && navLinks.classList.contains('nav-open')) {
+                navLinks.classList.remove('nav-open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                hamburger.focus();
+            }
+        });
     }
 
-    .nav-links.nav-open { display: flex; }
+    /* ----------------------------------------------------------
+       FADE-IN ON SCROLL
+    ---------------------------------------------------------- */
+    const fadeEls = document.querySelectorAll('.card, .timeline-item, .contribute-card, .section-title, .section-subtitle');
 
-    .nav-links li { width: 100%; }
-    .nav-links a {
-        display: block;
-        padding: 12px 24px;
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Stagger with delay
+                    const delay = (i % 6) * 80;
+                    setTimeout(() => {
+                        entry.target.classList.remove('fade-in-hidden');
+                        entry.target.classList.add('fade-in-visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        fadeEls.forEach(el => {
+            el.classList.add('fade-in-hidden');
+            observer.observe(el);
+        });
     }
-    .nav-links a::after { display: none; }
 
-    .hamburger { display: flex; }
-
-    nav { flex-wrap: wrap; position: relative; }
-
-    .hero { padding: 80px 20px; }
-    .hero h1 { font-size: 2.2rem; }
-
-    .contribute-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* ----------------------------------------------------------
+       TOAST NOTIFICATIONS
+    ---------------------------------------------------------- */
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        document.body.appendChild(toastContainer);
     }
 
-    #dynamic-fields.fields-visible { padding: 24px; }
-}
+    const showToast = (message, type = 'default', duration = 4000) => {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
 
-@media (max-width: 420px) {
-    .contribute-grid { grid-template-columns: repeat(2, 1fr); }
-    .section-title { font-size: 1.8rem; }
-}
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => toast.classList.add('toast-show'));
+        });
+
+        setTimeout(() => {
+            toast.classList.remove('toast-show');
+            toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+        }, duration);
+    };
+
+    /* ----------------------------------------------------------
+       NEWSLETTER FORM (index.html)
+    ---------------------------------------------------------- */
+    const newsletterForm = document.querySelector('.newsletter-form, section form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]')?.value.trim();
+            if (!email) return;
+            showToast('🎉 Thank you! You\'ll receive our next impact report.', 'success');
+            newsletterForm.reset();
+        });
+    }
+
+    /* ----------------------------------------------------------
+       CONTRIBUTE FORM (jobs.html)
+    ---------------------------------------------------------- */
+    const contributeCards = document.querySelectorAll('.contribute-card');
+    const dynamicFields = document.getElementById('dynamic-fields');
+    const submitBtn = document.querySelector('.contrib-submit');
+    const selectedCategory = document.getElementById('selected-category');
+
+    const fieldConfigs = {
+        skills: {
+            icon: 'fa-chalkboard-user',
+            title: 'Skills & Teaching',
+            fields: [
+                { id: 'skill-domain', label: 'Your field of expertise', type: 'text', placeholder: 'e.g. English, Python, Accounting…', full: false },
+                { id: 'skill-format', label: 'Format', type: 'select', options: ['Online live sessions', 'Pre-recorded videos', 'In-person workshops', 'Mentoring 1-on-1'], full: false },
+                { id: 'skill-availability', label: 'Weekly availability', type: 'text', placeholder: 'e.g. 2 hours on weekends', full: false },
+                { id: 'skill-level', label: 'Audience level', type: 'select', options: ['Beginner', 'Intermediate', 'Advanced', 'All levels'], full: false },
+                { id: 'skill-details', label: 'Additional details', type: 'textarea', placeholder: 'Tell us more about your offer…', full: true },
+            ]
+        },
+        goods: {
+            icon: 'fa-box-open',
+            title: 'Goods & Equipment',
+            fields: [
+                { id: 'goods-type', label: 'Type of goods', type: 'text', placeholder: 'e.g. Clothing, Computers, Furniture…', full: false },
+                { id: 'goods-qty', label: 'Approximate quantity', type: 'text', placeholder: 'e.g. 5 boxes, 3 laptops…', full: false },
+                { id: 'goods-condition', label: 'Condition', type: 'select', options: ['New', 'Like new', 'Good', 'Acceptable'], full: false },
+                { id: 'goods-pickup', label: 'Pickup or delivery', type: 'select', options: ['Pickup only', 'I can deliver locally', 'I can ship'], full: false },
+                { id: 'goods-details', label: 'Additional details', type: 'textarea', placeholder: 'Photos, location, best contact time…', full: true },
+            ]
+        },
+        services: {
+            icon: 'fa-handshake',
+            title: 'Services & Pro Bono',
+            fields: [
+                { id: 'service-type', label: 'Service type', type: 'text', placeholder: 'e.g. Legal advice, Medical, Translation…', full: false },
+                { id: 'service-hours', label: 'Hours per month', type: 'text', placeholder: 'e.g. 4 hours/month', full: false },
+                { id: 'service-duration', label: 'Commitment duration', type: 'select', options: ['One-time', '1–3 months', '3–6 months', 'Ongoing'], full: false },
+                { id: 'service-remote', label: 'Mode', type: 'select', options: ['Remote only', 'In-person only', 'Both'], full: false },
+                { id: 'service-details', label: 'Describe your offer', type: 'textarea', placeholder: 'Tell us what you can bring to our community…', full: true },
+            ]
+        },
+        funding: {
+            icon: 'fa-circle-dollar-to-slot',
+            title: 'Funding & Donations',
+            fields: [
+                { id: 'fund-type', label: 'Type of support', type: 'select', options: ['One-time donation', 'Monthly contribution', 'Project sponsorship', 'Corporate grant'], full: false },
+                { id: 'fund-amount', label: 'Estimated amount (USD)', type: 'text', placeholder: 'e.g. 500', full: false },
+                { id: 'fund-destination', label: 'Preferred destination', type: 'select', options: ['Where it\'s most needed', 'Housing programs', 'E-Learning platform', 'Healthcare initiatives'], full: false },
+                { id: 'fund-details', label: 'Message to our team', type: 'textarea', placeholder: 'Any conditions, partnership ideas, or questions…', full: true },
+            ]
+        },
+        other: {
+            icon: 'fa-lightbulb',
+            title: 'My Own Idea',
+            fields: [
+                { id: 'other-title', label: 'Title of your idea', type: 'text', placeholder: 'Give it a short memorable name', full: false },
+                { id: 'other-impact', label: 'Estimated impact', type: 'text', placeholder: 'How many people could benefit?', full: false },
+                { id: 'other-description', label: 'Describe your idea', type: 'textarea', placeholder: 'What problem does it solve? How would it work?', full: true },
+            ]
+        }
+    };
+
+    const buildFields = (type) => {
+        const config = fieldConfigs[type];
+        if (!config || !dynamicFields) return;
+
+        let html = `
+            <div class="fields-header">
+                <i class="fa-solid ${config.icon}"></i>
+                ${config.title}
+            </div>
+            <div class="fields-grid">
+        `;
+
+        config.fields.filter(f => !f.full).forEach(f => {
+            html += `<div class="field-group">
+                <label for="${f.id}">${f.label}</label>`;
+
+            if (f.type === 'select') {
+                html += `<select id="${f.id}" name="${f.id}">` +
+                    f.options.map(o => `<option value="${o.toLowerCase().replace(/\s+/g,'-')}">${o}</option>`).join('') +
+                    `</select>`;
+            } else if (f.type === 'textarea') {
+                html += `<textarea id="${f.id}" name="${f.id}" rows="3" placeholder="${f.placeholder}"></textarea>`;
+            } else {
+                html += `<input type="text" id="${f.id}" name="${f.id}" placeholder="${f.placeholder}">`;
+            }
+            html += `</div>`;
+        });
+
+        html += `</div>`;
+
+        config.fields.filter(f => f.full).forEach(f => {
+            html += `<div class="field-group full">
+                <label for="${f.id}">${f.label}</label>
+                <textarea id="${f.id}" name="${f.id}" rows="4" placeholder="${f.placeholder}"></textarea>
+            </div>`;
+        });
+
+        html += `
+            <div class="contact-fields">
+                <div class="field-group">
+                    <label for="contact-name">Your name</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Sophie Martin" required>
+                </div>
+                <div class="field-group">
+                    <label for="contact-email">Your email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="sophie@example.com" required>
+                </div>
+            </div>
+        `;
+
+        dynamicFields.innerHTML = html;
+
+        requestAnimationFrame(() => {
+            dynamicFields.classList.add('fields-visible');
+        });
+
+        if (submitBtn) {
+            submitBtn.style.display = 'inline-flex';
+        }
+
+        // Scroll into view on mobile
+        if (window.innerWidth <= 768) {
+            setTimeout(() => {
+                dynamicFields.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 350);
+        }
+    };
+
+    contributeCards.forEach(card => {
+        const activate = () => {
+            contributeCards.forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            if (selectedCategory) selectedCategory.value = card.dataset.type;
+            buildFields(card.dataset.type);
+        };
+
+        card.addEventListener('click', activate);
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+        });
+    });
+
+    // Submit
+    const contributeForm = document.getElementById('contribute-form');
+    if (contributeForm) {
+        contributeForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name')?.value.trim();
+            const email = document.getElementById('contact-email')?.value.trim();
+
+            if (!name || !email) {
+                showToast('Please fill in your name and email.', 'default');
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+            }
+
+            setTimeout(() => {
+                showToast(`✅ Thank you ${name}! We'll be in touch at ${email}.`, 'success', 6000);
+                contributeForm.reset();
+                contributeCards.forEach(c => c.classList.remove('selected'));
+                if (dynamicFields) {
+                    dynamicFields.classList.remove('fields-visible');
+                    dynamicFields.innerHTML = '';
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.display = 'none';
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit my contribution';
+                }
+            }, 1200);
+        });
+    }
+
+    /* ----------------------------------------------------------
+       EVENT PAGE — Register button
+    ---------------------------------------------------------- */
+    const registerBtn = document.querySelector('.event-register-btn');
+    if (registerBtn) {
+        registerBtn.addEventListener('click', () => {
+            showToast('🎬 You\'re registered! Check your email for details.', 'success');
+        });
+    }
+
+    // Generic register button
+    document.querySelectorAll('button').forEach(btn => {
+        if (btn.textContent.includes('Register for the Broadcast')) {
+            btn.addEventListener('click', () => {
+                showToast('🎬 You\'re registered! Check your email for details.', 'success');
+            });
+        }
+    });
+
+    /* ----------------------------------------------------------
+       APPLY NOW buttons (jobs.html)
+    ---------------------------------------------------------- */
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+        if (link.textContent.trim() === 'Apply Now') {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const jobTitle = link.closest('.card')?.querySelector('h3')?.textContent || 'this position';
+                showToast(`📩 Redirecting to the application form for ${jobTitle}…`, 'info');
+            });
+        }
+    });
+
+    /* ----------------------------------------------------------
+       COUNTER ANIMATION (stat strip)
+    ---------------------------------------------------------- */
+    const animateCounter = (el, target, suffix = '') => {
+        const duration = 1600;
+        const start = performance.now();
+        const update = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+    };
+
+    if ('IntersectionObserver' in window) {
+        const statEls = document.querySelectorAll('.stat-strip-item .stat-num');
+        if (statEls.length) {
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const raw = entry.target.dataset.count;
+                        const suffix = entry.target.dataset.suffix || '';
+                        if (raw) animateCounter(entry.target, parseInt(raw), suffix);
+                        statObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statEls.forEach(el => statObserver.observe(el));
+        }
+    }
+
+})();

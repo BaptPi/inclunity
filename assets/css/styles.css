@@ -17,6 +17,11 @@
 
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Playfair Display', serif;
+
+    /* Mobile spacing tokens */
+    --section-py: 90px;
+    --section-px: 24px;
+    --nav-height: 68px;
 }
 
 /* ============================================================
@@ -31,6 +36,9 @@
 html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent font scaling on iOS landscape */
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,11 +47,25 @@ body {
     background-color: var(--bg-color);
     line-height: 1.7;
     overflow-x: hidden;
+    /* Safe area for notched phones */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 h1, h2, h3, h4, .logo {
     font-family: var(--font-heading);
     line-height: 1.2;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Better tap targets on mobile */
+a, button {
+    touch-action: manipulation;
 }
 
 /* Scrollbar personnalisée */
@@ -103,6 +125,7 @@ nav {
     padding: 1rem 5%;
     max-width: 1280px;
     margin: 0 auto;
+    min-height: var(--nav-height);
 }
 
 .logo {
@@ -112,6 +135,8 @@ nav {
     font-weight: 700;
     letter-spacing: -0.02em;
     transition: opacity var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 .logo:hover { opacity: 0.75; }
 
@@ -155,6 +180,14 @@ nav {
     color: var(--primary-color);
 }
 
+/* Nav actions group */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
 /* Hamburger responsive */
 .hamburger {
     display: none;
@@ -163,8 +196,17 @@ nav {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+    /* Minimum 44x44 tap target */
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
+.hamburger:hover { background: #f0f4f8; }
+
 .hamburger span {
     display: block;
     width: 22px;
@@ -177,6 +219,61 @@ nav {
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile bottom nav pill (NEW — QR-code-first UX) */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    background: var(--white);
+    border-top: 1px solid #edf2f7;
+    box-shadow: 0 -4px 20px rgba(26,54,93,0.08);
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+}
+
+.mobile-bottom-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mobile-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition);
+    min-width: 52px;
+    text-align: center;
+}
+
+.mobile-bottom-nav a i {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, color var(--transition);
+}
+
+.mobile-bottom-nav a:hover,
+.mobile-bottom-nav a.active {
+    color: var(--primary-color);
+}
+
+.mobile-bottom-nav a:hover i,
+.mobile-bottom-nav a.active i {
+    transform: translateY(-2px);
+    color: var(--accent-color);
+}
 
 /* ============================================================
    BOUTONS
@@ -197,6 +294,13 @@ nav {
     position: relative;
     overflow: hidden;
     will-change: transform;
+    /* Prevent wrapping on small screens */
+    white-space: nowrap;
+    /* Min tap target */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-donate::before, .btn-primary::before {
@@ -212,6 +316,13 @@ nav {
 .btn-donate:hover, .btn-primary:hover {
     background: var(--secondary-color);
     box-shadow: 0 6px 20px rgba(43, 108, 176, 0.35);
+}
+
+/* Full-width button helper */
+.btn-full {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
 }
 
 /* ============================================================
@@ -237,17 +348,62 @@ nav {
 }
 
 .hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-size: clamp(2rem, 6vw, 3.8rem);
     margin-bottom: 20px;
     letter-spacing: -0.03em;
     text-shadow: 0 2px 20px rgba(0,0,0,0.15);
 }
 
 .hero p {
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
     max-width: 680px;
     margin: 0 auto 30px;
     opacity: 0.88;
+}
+
+/* Hero CTA row */
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   STAT STRIP (NEW — mobile-first impact numbers)
+   ============================================================ */
+.stat-strip {
+    background: var(--primary-color);
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    text-align: center;
+}
+
+.stat-strip-item {
+    padding: 8px 12px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-strip-item:last-child { border-right: none; }
+
+.stat-strip-item .stat-num {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--accent-color);
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-strip-item .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 /* ============================================================
@@ -256,12 +412,12 @@ nav {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 90px 24px;
+    padding: var(--section-py) var(--section-px);
 }
 
 .section-title {
     text-align: center;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
     color: var(--primary-color);
     margin-bottom: 14px;
     letter-spacing: -0.02em;
@@ -512,7 +668,7 @@ footer {
 /* Grille des catégories */
 .contribute-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 16px;
     margin-bottom: 36px;
 }
@@ -642,6 +798,8 @@ footer {
     transition: border-color var(--transition), box-shadow var(--transition);
     outline: none;
     resize: vertical;
+    /* Prevent iOS zoom on focus */
+    font-size: max(16px, 0.95rem);
 }
 
 .field-group input:focus,
@@ -676,6 +834,7 @@ footer {
     cursor: pointer;
     transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
     font-family: var(--font-main);
+    min-height: 52px;
 }
 
 .contrib-submit:hover {
@@ -687,6 +846,54 @@ footer {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none !important;
+}
+
+/* ============================================================
+   NEWSLETTER STRIP
+   ============================================================ */
+.newsletter-strip {
+    background: #f8f9fa;
+    padding: 60px 24px;
+    text-align: center;
+}
+
+.newsletter-strip h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.newsletter-strip p {
+    color: var(--text-light);
+    margin-bottom: 28px;
+    font-size: 0.97rem;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 100px;
+    border: 1.5px solid #e2e8f0;
+    font-family: var(--font-main);
+    font-size: max(16px, 0.95rem);
+    color: var(--text-color);
+    background: var(--white);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+    min-height: 52px;
+}
+
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(43,108,176,0.12);
 }
 
 /* ============================================================
@@ -705,16 +912,82 @@ footer {
 }
 
 /* ============================================================
-   RESPONSIVE
+   MOBILE FLOATING ACTION BUTTON (Support Us — always visible)
    ============================================================ */
-@media (max-width: 900px) {
-    .fields-grid,
-    .contact-fields {
-        grid-template-columns: 1fr;
+.fab-support {
+    display: none;
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom) + 74px);
+    right: 20px;
+    z-index: 900;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 20px rgba(236, 201, 75, 0.5);
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.fab-support:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 28px rgba(236, 201, 75, 0.6);
+}
+
+/* FAB tooltip */
+.fab-support::after {
+    content: 'Support Us';
+    position: absolute;
+    right: 68px;
+    background: var(--primary-color);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.fab-support:hover::after {
+    opacity: 1;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1.2rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .contribute-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================================ */
 @media (max-width: 768px) {
+    :root {
+        --section-py: 56px;
+        --section-px: 20px;
+    }
+
+    /* ----- NAV ----- */
     .nav-links {
         display: none;
         position: absolute;
@@ -725,33 +998,245 @@ footer {
         gap: 0;
         border-top: 1px solid #edf2f7;
         box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        padding: 16px 0;
+        padding: 8px 0;
+        /* Slide down animation */
+        animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 
     .nav-links.nav-open { display: flex; }
 
     .nav-links li { width: 100%; }
     .nav-links a {
-        display: block;
-        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px;
+        font-size: 1rem;
+        border-bottom: 1px solid #f0f4f8;
     }
     .nav-links a::after { display: none; }
+    .nav-links li:last-child a { border-bottom: none; }
 
     .hamburger { display: flex; }
 
     nav { flex-wrap: wrap; position: relative; }
 
-    .hero { padding: 80px 20px; }
-    .hero h1 { font-size: 2.2rem; }
+    /* Hide "Portal Login" text link on mobile to save space */
+    .nav-actions .login-link { display: none; }
 
-    .contribute-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Bottom nav appears on mobile */
+    .mobile-bottom-nav { display: block; }
+
+    /* FAB appears */
+    .fab-support { display: flex; }
+
+    /* Footer needs bottom padding for the bottom nav bar */
+    footer {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
     }
 
-    #dynamic-fields.fields-visible { padding: 24px; }
+    /* ----- HERO ----- */
+    .hero {
+        padding: 72px 20px 80px;
+        /* Disable parallax on mobile (performance) */
+        transform: none !important;
+    }
+
+    .hero h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+    .hero p { font-size: 1rem; }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-cta .btn-donate,
+    .hero-cta .btn-primary {
+        width: 100%;
+        max-width: 320px;
+        font-size: 1rem;
+        padding: 14px 28px;
+    }
+
+    /* ----- STAT STRIP ----- */
+    .stat-strip {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 20px 12px;
+    }
+
+    /* ----- CARDS ----- */
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 28px 22px;
+        /* Disable hover lift on touch */
+        transform: none !important;
+    }
+
+    /* ----- CONTAINER ----- */
+    .container { padding: 56px 20px; }
+
+    /* ----- SECTION TEXT ----- */
+    .section-subtitle { font-size: 0.97rem; margin-bottom: 40px; }
+
+    /* ----- TIMELINE ----- */
+    .timeline {
+        padding-left: 28px;
+    }
+
+    .timeline-item::before {
+        left: -37px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .timeline-content {
+        padding: 20px 18px;
+        transform: none !important;
+    }
+
+    .timeline-content h3 { font-size: 1.1rem; }
+
+    /* ----- FOOTER ----- */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 32px;
+    }
+
+    .footer-grid > div:not(:last-child) {
+        padding-bottom: 32px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* ----- TOAST ----- */
+    #toast-container {
+        bottom: 90px;
+        right: 16px;
+        left: 16px;
+    }
+
+    .toast { max-width: 100%; }
+
+    /* ----- CONTRIBUTIONS ----- */
+    .contributions-section {
+        margin-top: 60px;
+        padding-top: 48px;
+    }
+
+    .contribute-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .contribute-card {
+        padding: 20px 10px;
+    }
+
+    .contribute-card i { font-size: 1.5rem; }
+    .contribute-card span { font-size: 0.75rem; }
+
+    #dynamic-fields.fields-visible { padding: 20px; }
+
+    .fields-grid,
+    .contact-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .contrib-submit {
+        width: 100%;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    /* ----- NEWSLETTER ----- */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form .btn-donate {
+        width: 100%;
+        border-radius: var(--radius-sm);
+    }
+
+    /* ----- EVENT PAGE ----- */
+    .event-box { padding: 48px 24px !important; }
+    .event-box h1 { font-size: 2.4rem !important; }
+
+    /* ----- JOBS "WHY WORK" GRID ----- */
+    .why-work-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ----- TESTIMONIALS ----- */
+    .testimonial-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 
-@media (max-width: 420px) {
-    .contribute-grid { grid-template-columns: repeat(2, 1fr); }
-    .section-title { font-size: 1.8rem; }
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (≤480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    :root {
+        --section-py: 44px;
+        --section-px: 16px;
+    }
+
+    .logo { font-size: 1.3rem; }
+
+    .hero { padding: 60px 16px 72px; }
+    .hero h1 { font-size: 1.9rem; }
+
+    .contribute-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .section-title { font-size: 1.6rem; }
+
+    /* Stat strip tighter */
+    .stat-strip-item .stat-num { font-size: 1.3rem; }
+    .stat-strip-item .stat-label { font-size: 0.6rem; }
+
+    /* Card padding tighter */
+    .card { padding: 22px 16px; }
+
+    /* Bottom nav labels hidden on very small screens */
+    .mobile-bottom-nav a span { display: none; }
+    .mobile-bottom-nav a i { font-size: 1.4rem; }
+    .mobile-bottom-nav a { min-width: 40px; }
+}
+
+/* ============================================================
+   RESPONSIVE — LANDSCAPE PHONE (height constraint)
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 48px 20px;
+    }
+    .mobile-bottom-nav { display: none; }
+    .fab-support { bottom: 20px; }
+    footer { padding-bottom: 24px; }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+    header, footer, .mobile-bottom-nav, .fab-support,
+    .scroll-progress, #toast-container { display: none; }
+    .container { padding: 20px; }
+    .card { box-shadow: none; border: 1px solid #ddd; }
 }

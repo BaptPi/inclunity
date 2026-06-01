@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missions | Foundation NAME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a365d">
+    <title>Missions | Inclunity</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -11,39 +12,71 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Foundation NAME</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Inclunity</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">Who Are We</a></li>
                 <li><a href="missions.html">Missions</a></li>
+                <li><a href="event.html">Event</a></li>
                 <li><a href="program.html">The Program</a></li>
                 <li><a href="elearning.html">E-Learning</a></li>
                 <li><a href="jobs.html">Jobs</a></li>
             </ul>
-            <a href="event.html" class="btn-donate">Support Us</a>
+            <div class="nav-actions">
+                <a href="event.html" class="btn-donate">Support Us</a>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <h1 class="section-title">Our Missions</h1>
-            <p class="section-subtitle">Providing fundamental rights to people in precarious situations.</p>
+            <p class="section-subtitle">Providing fundamental rights to people in precarious situations — housing, health, and education are not privileges, they are foundations.</p>
             
             <div class="grid-3">
                 <div class="card">
                     <i class="fa-solid fa-house-user"></i>
                     <h3>Housing and Work</h3>
-                    <p>Providing safe housing and employment opportunities for people in precarious situations.</p>
+                    <p>Providing safe housing and employment opportunities for people in precarious situations through our rent-free 4-month program.</p>
+                    <a href="program.html" style="display: inline-block; margin-top: 18px; color: var(--secondary-color); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Learn how it works <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div class="card">
-                    <i class="fa-solid fa-heart-pulse"></i>
+                <div class="card" style="border: 2px solid var(--accent-color);">
+                    <i class="fa-solid fa-heart-pulse" style="color: #e74c3c;"></i>
                     <h3>Healthcare and Hygiene</h3>
-                    <p>Ensuring access to basic healthcare and hygiene resources for a healthy living.</p>
+                    <p>Ensuring access to basic healthcare and hygiene resources for a healthy living. Our first dedicated hospital opens June 2026.</p>
+                    <a href="event.html" style="display: inline-block; margin-top: 18px; color: var(--secondary-color); font-weight: 600; font-size: 0.9rem; text-decoration: none;">See the opening event <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="card">
-                    <i class="fa-solid fa-book-open-reader"></i>
+                    <i class="fa-solid fa-book-open-reader" style="color: #3498db;"></i>
                     <h3>Global Education</h3>
-                    <p>Providing quality education to everyone around the globe, starting with children.</p>
+                    <p>Providing quality education to everyone around the globe, starting with children — through our free e-learning platform.</p>
+                    <a href="elearning.html" style="display: inline-block; margin-top: 18px; color: var(--secondary-color); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Start learning <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Impact numbers -->
+            <div style="margin-top: 80px; padding: 50px 40px; background: var(--white); border-radius: 20px; box-shadow: var(--card-shadow); text-align: center;">
+                <h3 style="font-family: var(--font-heading); color: var(--primary-color); font-size: 1.5rem; margin-bottom: 36px;">Our Impact in Numbers</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 28px;">
+                    <div>
+                        <p style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--accent-color); font-weight: 700;">1.6B</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">People lacking adequate housing</p>
+                    </div>
+                    <div>
+                        <p style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--accent-color); font-weight: 700;">402M</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">Unemployed globally</p>
+                    </div>
+                    <div>
+                        <p style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--accent-color); font-weight: 700;">244M</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">Children out of school</p>
+                    </div>
+                    <div>
+                        <p style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--accent-color); font-weight: 700;">500K</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">Lives we've already changed</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,8 +86,8 @@
         <div class="footer-grid">
             <div>
                 <h4>Inclunity Foundation</h4>
-                <p style="color: #A0AEC0;">A global initiative under Apple ecosystems since 2020.</p>
-                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0;">
+                <p style="color: #A0AEC0;">A global initiative empowering humanity since 2020.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0; line-height: 2;">
                     <p><i class="fa-solid fa-location-dot"></i> 1 Apple Park Way, Cupertino, CA 95014</p>
                     <p><i class="fa-solid fa-phone"></i> +1 (800) 555-UNIT</p>
                     <p><i class="fa-solid fa-envelope"></i> contact@inclunity.org</p>

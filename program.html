@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Program | Foundation NAME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a365d">
+    <title>The Program | Inclunity</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -11,49 +12,82 @@
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Foundation NAME</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-hands-holding-circle"></i> Inclunity</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">Who Are We</a></li>
                 <li><a href="missions.html">Missions</a></li>
+                <li><a href="event.html">Event</a></li>
                 <li><a href="program.html">The Program</a></li>
                 <li><a href="elearning.html">E-Learning</a></li>
                 <li><a href="jobs.html">Jobs</a></li>
             </ul>
-            <a href="event.html" class="btn-donate">Support Us</a>
+            <div class="nav-actions">
+                <a href="event.html" class="btn-donate">Support Us</a>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main>
         <div class="container">
             <h1 class="section-title">The 4-Month System</h1>
-            <p class="section-subtitle">A sustainable model empowering individuals toward independence.</p>
+            <p class="section-subtitle">A sustainable, human-centred model empowering individuals toward true independence — step by step, with dignity.</p>
             
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Months 1 and 2: Assessment</h3>
-                        <p>Adults live rent-free. Comprehensive assessments of their skills and abilities are conducted.</p>
+                        <span class="tag"><i class="fa-solid fa-calendar-day"></i> Month 1–2</span>
+                        <h3>Assessment & Stability</h3>
+                        <p>Beneficiaries live rent-free in safe housing. Comprehensive assessments of their skills, goals, and needs are conducted by our trained coordinators. E-learning access begins.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Months 3 and 4: Skill Building</h3>
-                        <p>Continued rent-free living while they start engaging in work or specialized training.</p>
+                        <span class="tag"><i class="fa-solid fa-calendar-day"></i> Month 3–4</span>
+                        <h3>Skill Building & Work</h3>
+                        <p>Continued rent-free living while participants engage in professional training, workshops, or part-time work placements matched to their profile and the local job market.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Post 4 Months: Reduced Rent</h3>
-                        <p>They begin paying a significantly reduced rent to transition towards financial responsibility.</p>
+                        <span class="tag" style="background: #e8f5e9; color: #2e7d32;"><i class="fa-solid fa-seedling"></i> Post 4 Months</span>
+                        <h3>Reduced Rent Transition</h3>
+                        <p>Participants begin paying a significantly reduced rent — designed to mirror real-world conditions and gradually build financial responsibility while retaining full program support.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Independence and Giving Back</h3>
-                        <p>Once ready to live independently, they return the apartment, making it available for the next person on the waiting list.</p>
+                        <span class="tag" style="background: #fff3e0; color: #ef6c00;"><i class="fa-solid fa-star"></i> Goal Reached</span>
+                        <h3>Independence & Giving Back</h3>
+                        <p>Once ready to live independently, participants return the apartment — making it available for the next person on the waiting list. Many become volunteers or contributors themselves.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- FAQ strip -->
+            <div style="margin-top: 80px; padding: 48px 40px; background: var(--white); border-radius: 20px; box-shadow: var(--card-shadow);">
+                <h3 style="font-family: var(--font-heading); color: var(--primary-color); font-size: 1.6rem; margin-bottom: 32px; text-align: center;">Common Questions</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent-color);"></i> Who can apply?</p>
+                        <p style="font-size: 0.92rem; color: var(--text-light);">Any adult facing housing insecurity or unemployment. Applications are reviewed by our local coordinators.</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent-color);"></i> Is it really free?</p>
+                        <p style="font-size: 0.92rem; color: var(--text-light);">Yes. The first 4 months are entirely rent-free. The transition phase is subsidized to remain affordable.</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent-color);"></i> Where are the apartments?</p>
+                        <p style="font-size: 0.92rem; color: var(--text-light);">We currently operate in 40+ cities across 30 countries. New locations are added every quarter.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="jobs.html#contribute" class="btn-donate" style="font-size: 1.05rem; padding: 16px 40px;">Contribute to the Program</a>
             </div>
         </div>
     </main>
@@ -62,8 +96,8 @@
         <div class="footer-grid">
             <div>
                 <h4>Inclunity Foundation</h4>
-                <p style="color: #A0AEC0;">A global initiative under Apple ecosystems since 2020.</p>
-                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0;">
+                <p style="color: #A0AEC0;">A global initiative empowering humanity since 2020.</p>
+                <div style="margin-top: 20px; font-size: 0.9rem; color: #A0AEC0; line-height: 2;">
                     <p><i class="fa-solid fa-location-dot"></i> 1 Apple Park Way, Cupertino, CA 95014</p>
                     <p><i class="fa-solid fa-phone"></i> +1 (800) 555-UNIT</p>
                     <p><i class="fa-solid fa-envelope"></i> contact@inclunity.org</p>
