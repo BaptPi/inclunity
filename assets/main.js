@@ -126,9 +126,11 @@
             });
         });
 
-        // Close on outside click
+        // Close on outside click (fonctionne aussi avec position:fixed)
         document.addEventListener('click', e => {
-            if (!header?.contains(e.target) && navLinks.classList.contains('nav-open')) {
+            const isInsideHeader = header?.contains(e.target);
+            const isInsideMenu = navLinks.contains(e.target);
+            if (!isInsideHeader && !isInsideMenu && navLinks.classList.contains('nav-open')) {
                 navLinks.classList.remove('nav-open');
                 hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
