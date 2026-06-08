@@ -8,9 +8,9 @@
 :root{
   --ink:#14233f;
   --primary:#1a365d;
-  --secondary:#2b6cb0;
-  --accent:#e07a5f;          /* terracotta */
-  --accent-deep:#d8654b;
+  --secondary:#3590a8;       /* bleu teal — logo "INCL" */
+  --accent:#d47820;          /* orange ambré — logo "NITY" */
+  --accent-deep:#b86218;
   --accent-2:#3aa17e;        /* vert espoir */
   --bg:#fbf8f4;
   --surface:#ffffff;
@@ -29,9 +29,9 @@
 }
 html[data-theme="dark"]{
   --primary:#0e1830;
-  --secondary:#7aa7df;
-  --accent:#f0936f;
-  --accent-deep:#e07a5f;
+  --secondary:#5ab4c8;       /* teal clair mode sombre */
+  --accent:#e8922a;
+  --accent-deep:#d47820;
   --accent-2:#52c79c;
   --bg:#0d1626;
   --surface:#142039;
@@ -68,8 +68,8 @@ ul{list-style:none}
 .btn-primary{background:var(--primary);color:#fff}
 html[data-theme="dark"] .btn-primary{background:var(--secondary);color:#0d1626}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(26,54,93,.35)}
-.btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;box-shadow:0 10px 24px rgba(224,122,95,.4)}
-.btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,122,95,.5)}
+.btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;box-shadow:0 10px 24px rgba(212,120,32,.4)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(212,120,32,.5)}
 .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff}
 .btn-ghost:hover{background:rgba(255,255,255,.12)}
 .btn-light{background:#fff;color:var(--primary)}
@@ -82,12 +82,8 @@ html[data-theme="dark"] .btn-primary{background:var(--secondary);color:#0d1626}
 .site-header.scrolled{background:color-mix(in srgb,var(--surface) 80%,transparent);
   backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 var(--border),var(--shadow)}
 .site-header.scrolled .bar{padding-top:12px;padding-bottom:12px}
-.brand{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--primary);
-  display:inline-flex;align-items:center;gap:9px;letter-spacing:-.03em}
-html[data-theme="dark"] .brand{color:var(--text)}
-.brand .mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-size:.95rem;
-  box-shadow:0 6px 16px rgba(224,122,95,.4)}
+.brand{display:inline-flex;align-items:center}
+.brand-logo{height:46px;width:auto;display:block;object-fit:contain}
 .nav{display:flex;align-items:center;gap:6px}
 .nav a{position:relative;padding:8px 14px;font-weight:600;font-size:.92rem;color:var(--text-soft);
   border-radius:10px;transition:color .25s var(--ease),background .25s var(--ease)}
@@ -134,7 +130,7 @@ html[data-theme="dark"] .hamburger span{background:var(--text)}
   padding:clamp(72px,12vw,140px) clamp(18px,5vw,40px) clamp(90px,14vw,150px);
   background:radial-gradient(120% 120% at 15% 10%,#23507f 0%,var(--primary) 45%,#0f2342 100%)}
 .hero::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
-  background:radial-gradient(40% 50% at 80% 20%,rgba(224,122,95,.35),transparent 60%),
+  background:radial-gradient(40% 50% at 80% 20%,rgba(212,120,32,.35),transparent 60%),
             radial-gradient(35% 45% at 10% 80%,rgba(58,161,126,.30),transparent 60%)}
 .hero>*{position:relative;z-index:1}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.8rem;text-transform:uppercase;
@@ -201,7 +197,7 @@ html[data-theme="dark"] .card h3{color:var(--text)}
 .band{margin-top:80px;background:linear-gradient(135deg,var(--primary),#12294a);border-radius:24px;
   padding:clamp(40px,7vw,64px) clamp(22px,5vw,40px);color:#fff;text-align:center;position:relative;overflow:hidden}
 .band::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-90px;top:-90px;
-  background:radial-gradient(circle,rgba(224,122,95,.4),transparent 70%);pointer-events:none}
+  background:radial-gradient(circle,rgba(212,120,32,.4),transparent 70%);pointer-events:none}
 .band h3{color:var(--accent);font-size:clamp(1.5rem,3.5vw,2rem);margin-bottom:14px;position:relative}
 .band>p{opacity:.85;max-width:620px;margin:0 auto 28px;position:relative}
 .band-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;position:relative;margin-top:8px}
@@ -314,14 +310,14 @@ html[data-theme="dark"] .fields-header{color:var(--text)}
 .contrib-submit{display:none;align-items:center;gap:10px;margin-top:26px;padding:14px 36px;
   background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;border:none;border-radius:100px;
   font-family:var(--font-body);font-weight:700;font-size:1rem;cursor:pointer;min-height:52px;
-  box-shadow:0 10px 24px rgba(224,122,95,.4);transition:transform .25s var(--ease)}
+  box-shadow:0 10px 24px rgba(212,120,32,.4);transition:transform .25s var(--ease)}
 .contrib-submit:hover{transform:translateY(-2px)}
 
 /* ---------- NEWSLETTER ---------- */
 .news{background:linear-gradient(135deg,var(--primary),#12294a);color:#fff;text-align:center;border-radius:24px;
   padding:clamp(40px,7vw,68px) clamp(20px,5vw,40px);position:relative;overflow:hidden}
 .news::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-90px;top:-90px;
-  background:radial-gradient(circle,rgba(224,122,95,.4),transparent 70%);pointer-events:none}
+  background:radial-gradient(circle,rgba(212,120,32,.4),transparent 70%);pointer-events:none}
 .news h3{color:#fff;font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:10px;position:relative}
 .news>p{opacity:.85;margin-bottom:26px;position:relative}
 .news form{display:flex;gap:10px;max-width:480px;margin:0 auto;position:relative;flex-wrap:wrap}
@@ -352,7 +348,7 @@ html[data-theme="dark"] .foot{background:#0a1120}
 .reveal.in{opacity:1;transform:none}
 .totop{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:14px;border:none;
   background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;
-  box-shadow:0 10px 26px rgba(224,122,95,.5);opacity:0;transform:translateY(16px) scale(.9);
+  box-shadow:0 10px 26px rgba(212,120,32,.5);opacity:0;transform:translateY(16px) scale(.9);
   pointer-events:none;transition:all .35s var(--ease);z-index:900}
 .totop.show{opacity:1;transform:none;pointer-events:auto}
 .totop:hover{transform:translateY(-3px)}
